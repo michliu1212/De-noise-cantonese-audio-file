@@ -17,4 +17,7 @@ Since the sample rate are different from the main dataset (16 kHz instead of 44.
 
 ## 4. Elaborate the use case with Google cloud NLP API
 
+## 5. Next Steps
+Slow down the speed of audio to check if it can be transcribed more accurately. 
+
 
