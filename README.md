@@ -40,7 +40,7 @@ The spectrum of an audio tells you what frequencies are in it. To remove noise, 
 Main dataset are produced from Cantonese Youtube videos that are downloaded and converted to WAV files.  
 
 ###  1. Add random segment of environmental audio to the audio
-A folder of background noise WAV file from [Microsoft Scalable Noisy Speech Dataset (MS-SNSD)](https://github.com/microsoft/MS-SNSD) with white noise and recordings of machinery and everyday household activities are used in this analysis to add noises on the cantonese audio. The loudness of the background noise are used in 5 levels, with 00 the largest and 40 the smallest. 
+A folder of background noise WAV file from [Microsoft Scalable Noisy Speech Dataset (MS-SNSD)](https://github.com/microsoft/MS-SNSD) with white noise and recordings of machinery and everyday household activities are used in this analysis to add noises on the cantonese audio. The loudness of the background noise are used in 4 levels, with 10 the largest and 40 the smallest. 
 Since the sample rate are different from the main dataset (16 kHz instead of 44.1 kHz), the audio signal for noise are upsampled to 44.1 kHz in order to combine the two audios. 
 
 ## 2. Noise Suppression MVP
