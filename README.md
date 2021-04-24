@@ -62,5 +62,6 @@ Denoise with Deep Learning models (Source: https://sthalles.github.io/practical-
 Sound separation --> Deep Clustering 
 using Ideal Binary Masks --> print spectrogram, compare the two audios, create mask, train each possible background noise as mask --> problem is it is not easy to create IBM in real life as we do not know what is the original noise in reality
 
-
+## Learnings:
+At the Data preparation period, I had faced the problem of having a the audio of female to male and the audio is being slow down. I realised that the problem is because the kHz of the noise audio and the main audio are different. I solved it by resample the noise audio to 44100 kHz. 
 
