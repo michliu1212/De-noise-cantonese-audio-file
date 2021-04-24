@@ -31,9 +31,6 @@ Source: https://dolby.io/blog/enhance-audio-by-removing-stationary-background-no
 
 The spectrum of an audio tells you what frequencies are in it. To remove noise, we need to know  "where it is", and "what kind of noise" it is. As a naive approach, I will try to remove high frequencies, ie replace the last values of the fft by zero then do a ifft, since it's often where there is more noise than data.
 
-## Speech Seperation
-### Speech Enhancement: Speech - nonspeech seperation (de-noising)
-### Speaker Seperation: multi-speaker
 
 
 ## 1. Preparation of Dataset
@@ -45,6 +42,9 @@ Since the sample rate are different from the main dataset (16 kHz instead of 44.
 
 ## 2. Noise Suppression MVP
 There are many ways to remove the noise from a given audio recording. All it requires is a small sample where there is only a background noise, and then automatically delete this noise from the rest of the sample.
+
+Try to increase volume to check the accuracy.
+
 
 ## 3. Evaluation
   ### 1. Google Speech-to-text
