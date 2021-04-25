@@ -40,7 +40,7 @@ Main dataset are produced from Cantonese Youtube videos that are downloaded and 
 A folder of background noise WAV file from [Microsoft Scalable Noisy Speech Dataset (MS-SNSD)](https://github.com/microsoft/MS-SNSD) with white noise and recordings of machinery and everyday household activities are used in this analysis to add noises on the cantonese audio. The loudness of the background noise are used in 4 levels, with 10 the largest and 40 the smallest. 
 Since the sample rate are different from the main dataset (16 kHz instead of 44.1 kHz), the audio signal for noise are upsampled to 44.1 kHz in order to combine the two audios. 
 
-## 2. Noise Suppression MVP
+## 2. Noise Suppression Algorithm
 There are many ways to remove the noise from a given audio recording. All it requires is a small sample where there is only a background noise, and then automatically delete this noise from the rest of the sample.
 
 Try to increase volume to check the accuracy.
@@ -48,14 +48,13 @@ Try to increase volume to check the accuracy.
 
 ## 3. Evaluation
   ### 1. Google Speech-to-text
-  ### 2. Signal-to-noise ratio (SNR)
-  We know how the sound looks like before the mix. If the output and ground truth is near, it means it perform good. If the value of SNR is large, it means the difference between the ground truth and the output is small. While there are also some disavantage of using SNR, for example, it is highly affected by the volume of the output and input audio, if the output audio have a much lower volume, even from a human ears we hear exactly the same sound, it will shows a low SNR. 
-  ### 3. Scale invariant signal-to-distortion ratio (SI-SDR)
-  If the difference in angle of the output and ground truth is big, the SI-SDR will be low. If the output and ground truth are parallel, the SI-SDR will be super big. 
+
 
 ## 4. Elaborate the use case with Google cloud NLP API
 
 ## 5. Next Steps
+
+
 Slow down the speed of audio to check if it can be transcribed more accurately. 
 Denoise with Deep Learning models (Source: https://sthalles.github.io/practical-deep-learning-audio-denoising/)
 
@@ -72,7 +71,9 @@ The design of human's ear and a speech-to-text algorithm are very different. Fro
 
 It is clear that louder and slower audio can improve the transcription power. For the next step, we can try to adjust the rate of volume increase and slowdown to improve the transcription. 
 
-The Google speech-to-text API recognizer ([Source] (https://cloud.google.com/speech-to-text/docs/best-practices)) is designed to ignore background voices and noise without additional noise-canceling. However, excessive background noise and echoes may reduce accuracy, especially if a lossy codec is also used.
+The Google speech-to-text API recognizer ([Source](https://cloud.google.com/speech-to-text/docs/best-practices)) is designed to ignore background voices and noise without additional noise-canceling. However, excessive background noise and echoes may reduce accuracy, especially if a lossy codec is also used.
+
+Use a more robust algorithm such as de-noising with a [deep learning model](https://sthalles.github.io/practical-deep-learning-audio-denoising/)
 
 
 
