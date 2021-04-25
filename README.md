@@ -77,7 +77,7 @@ With the combination of sentiment analysis, we can detect the emotion of the cus
 
 * The way human perceive speech and the way machine the works are very different. While humans can focus on the voice produced by a single speaker in a crowded and noisy environment, this is not the same case with machine. From the examples we see, with our ears, we can clearly identify that the background noise are being removed/ reduced and can easily understand the speech in the audio. However, for machine, the performance are very different from what we perceived. To be able to improve the accuracy, for next steps, more effort will be put to understand the Speech-to-text algorithm and can try to use a  more robust algorithm such as de-noising with a [deep learning model](https://sthalles.github.io/practical-deep-learning-audio-denoising/).
 
-* It is clear that increasing the volume and slowdown the audio can help to improve slightly the transcribing accuracy. For the next step, we can try to adjust the rate of volume increase and slowdown to improve the transcription. (Reminder: a high slowdown rate will leads to distortion of audio). 
+* The API are sensitive to the volume of audio and the speed of speaking, this was found from the examples that increasing the volume and slowdown the audio can help to improve slightly the transcribing accuracy. For the next step, we can try to adjust the rate of volume increase and slowdown to improve the transcription. (Reminder: a high slowdown rate will leads to distortion of audio). 
 
 
 
