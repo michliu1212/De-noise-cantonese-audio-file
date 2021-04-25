@@ -4,7 +4,6 @@ Real applications have to recognize audio even when there are other irrelevant s
 
 As in the initial stage of the experiment, we will focus on a simple algorithm to understand and explore the next steps.  
 
-
 ## Types of Noise
 
 ### a. Stationary noise
@@ -64,7 +63,7 @@ Code: [01 Noise Suppression MVP & Evaluation]()
    Google Cloud Speech-to-text API is used to evaluate the result of the algorithm. We will run the API for the clear audio files, the noise files and the de-noised files to compare the text being transcribed and the accuracy. 
 
 ## 2. Elaborate the use case with Google cloud NLP API
-[02 Explore Google AutoML NLP API.ipynb](https://github.com/michliu1212/Audio-Background-Noise-Suppression/blob/ec14f55ecfb34ec49c256daa531cd429eb8cf077/02%20Explore%20Google%20AutoML%20NLP%20API.ipynb)
+Code: [02 Explore Google AutoML NLP API.ipynb](https://github.com/michliu1212/Audio-Background-Noise-Suppression/blob/ec14f55ecfb34ec49c256daa531cd429eb8cf077/02%20Explore%20Google%20AutoML%20NLP%20API.ipynb)
 
 Tracking and analysing call centre records and data can help to improve customer service and agent performance. It can provide insights of the areas of strength and weakness to improve the service and customer satisfaction. 
 
@@ -74,13 +73,13 @@ With the combination of sentiment analysis, we can detect the emotion of the cus
 
 ## 3. Learnings and Next Steps
 
-* The design of human's ear and a speech-to-text algorithm are very different. While humans can focus on the voice produced by a single speaker in a crowded and noisy environment, this is not the same case with machine. From our human ears, even we can clearly identified that the background noise are removed/ reduced and can clearly understand what are saying in the audio, from a machine perspective, it might become more difficult to identify words. 
+* The Google speech-to-text API recognizer is designed to ignore background voices and noise without additional noise-canceling. However, excessive background noise and echoes may reduce accuracy, especially if a lossy codec is also used ([(Source)](https://cloud.google.com/speech-to-text/docs/best-practices)). So from the analysis, we can see that the API are able to transcribe a lot of speech even in the highest level of background noise and are perform particularly well with the stationary noise. The API performs the worst when the background noise are human speaking, such as when neighbour is talking and in a noisy restaurant. In next steps, we should focus on background noise with huaman speaking, to isolate the speech of the main speaker with the others. 
 
-* It is clear that louder and slower audio can improve the transcription power. For the next step, we can try to adjust the rate of volume increase and slowdown to improve the transcription. 
+* The way human perceive speech and the way machine the works are very different. While humans can focus on the voice produced by a single speaker in a crowded and noisy environment, this is not the same case with machine. From the examples we see, with our ears, we can clearly identify that the background noise are being removed/ reduced and can easily understand the speech in the audio. However, for machine, the performance are very different from what we perceived. To be able to improve the accuracy, for next steps, more effort will be put to understand the Speech-to-text algorithm and can try to use a  more robust algorithm such as de-noising with a [deep learning model](https://sthalles.github.io/practical-deep-learning-audio-denoising/).
 
-* The Google speech-to-text API recognizer ([Source](https://cloud.google.com/speech-to-text/docs/best-practices)) is designed to ignore background voices and noise without additional noise-canceling. However, excessive background noise and echoes may reduce accuracy, especially if a lossy codec is also used. So from the analysis, we can see that the API are able to transcribe a lot of speech even in the highest level of background noise and are perform particularly well with the stationary noise. The API performs the worst when the background noise are human noise, such as when neighbour is talking and in a noisy restaurant. We should focus on this part in the next steps to isolate the speech of the main speaker with the others. 
+* It is clear that increasing the volume and slowdown the audio can help to improve slightly the transcribing accuracy. For the next step, we can try to adjust the rate of volume increase and slowdown to improve the transcription. (Reminder: a high slowdown rate will leads to distortion of audio). 
 
-* Use a more robust algorithm such as de-noising with a [deep learning model](https://sthalles.github.io/practical-deep-learning-audio-denoising/).
+
 
 
 
