@@ -1,8 +1,8 @@
 # Audio-Background-Noise-Suppression
 
-Real applications have to recognize audio even when there are other irrelevant sounds happening in the environment. While humans can focus on the voice produced by a single speaker in a crowded and noisy environment, this is not the same case with machine. The audio files from the call center are full of background noise, to be able to convert call audio from call center to transcription accurately, it is important to remove or reduce the background noise from the audio.  
+Real applications have to recognize audio even when there are other irrelevant sounds happening in the environment.  The audio files from the call center are full of background noise, to be able to convert call audio from call center to transcription accurately, it is important to remove or reduce the background noise from the audio.  
 
-As this is the initial stage of the experiment, at this stage, we will focus on simple and ready-made libraries in the implementation.  
+As in the initial stage of the experiment, we will focus on a simple algorithm to understand and explore the next steps.  
 
 ## Types of Noise
 Stationary or static noise is typical when there is a low volume background sound present in an audio signal. This noise is typically consistent across the entirety of a piece of media because the source of the sound doesn’t change.
@@ -67,7 +67,7 @@ To simplified the code.
 ## Learnings and next step:
 At the Data preparation period, I had faced the problem of having a the audio of female to male and the audio is being slow down. I realised that the problem is because the kHz of the noise audio and the main audio are different. I solved it by resample the noise audio to 44100 kHz.
 
-The design of human's ear and a speech-to-text algorithm are very different. From our human ears, even we can clearly identified that the background noise are removed/ reduced and can clearly understand what are saying in the audio, from a machine perspective, it might become more difficult to identify words. 
+The design of human's ear and a speech-to-text algorithm are very different. While humans can focus on the voice produced by a single speaker in a crowded and noisy environment, this is not the same case with machine. From our human ears, even we can clearly identified that the background noise are removed/ reduced and can clearly understand what are saying in the audio, from a machine perspective, it might become more difficult to identify words. 
 
 It is clear that louder and slower audio can improve the transcription power. For the next step, we can try to adjust the rate of volume increase and slowdown to improve the transcription. 
 
