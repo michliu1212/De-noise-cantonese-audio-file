@@ -34,46 +34,55 @@ These sounds are unwanted, but not easy to detect from the sound profile itself.
 [Source](https://dolby.io/blog/enhance-audio-by-removing-stationary-background-noise)
 
 
-0. Preparation of Dataset
+## 0. Preparation of Dataset
+[Code](00 Data Preparation.ipynb)
 Main dataset are produced from Cantonese Youtube videos that are downloaded and converted to WAV files.
 Noise audio files are downloaded from [Microsoft Scalable Noisy Speech Dataset (MS-SNSD)](https://github.com/microsoft/MS-SNSD) where it consists of white noise, recordings of machinery and everyday household activities. 
-   The noise file are used in this analysis to add noises on the cantonese audio. The loudness of the background noise are used in 5 levels, with 0 the largest and 40 the smallest. 
+* The noise file are used in this analysis to add noises on the cantonese audio. The loudness of the background noise are used in 5 levels, with 0 the largest and 40 the smallest. 
+
+## 1. Noise Suppression Algorithm & Evaluation
+[Code]
+[noisereduce library](https://timsainburg.com/noise-reduction-python.html) had been used to reduce the background noise. However, in the noisereduce library, it is required for both the noise signal and the signal audio clip. However, in the reality, we do not often have the noise signal, thus below will used a technique called sound envelope to create our own noise signal clip.
+
+### noisereduce algorithm
+      1. An Short-time Fourier Transforamtion is calculated over the noise audio clip
+      2. Statistics are calculated over FFT of the the noise (in frequency: mean, standard deviation, noise threshold)
+      3. A threshold is calculated based upon the statistics of the noise (and the desired sensitivity of the algorithm). How many standard deviations louder than the mean dB of the noise (at each frequency level) to be considered signal.
+      4. An STFT is calculated over the signal
+      5. A mask is determined by comparing the signal FFT to the threshold
+      6. The mask is smoothed with a filter over frequency and time
+      7. Calculate the threshold for each frequency/time bin, if the signal is above threshold --> convolve the mask with a smoothing filter with scipy.signal.fftconvolve
+      8. The mask is applied to the FFT of the signal, and is inverted with Inverse short time Fourier Transform (ISTFT)
+
+### Two additional ways are being tested on top of the algorithm
+* Increase the volume of the audio
+* Slowdown the audio
+
+### Evaluation - Google Cloud Speech-to-text API  
+   Google Cloud Speech-to-text API is used to evaluate the result of the algorithm. We will run the API for the clear audio files, the noise files and the de-noised files to compare the text being transcribed and the accuracy. 
+
+## 2. Elaborate the use case with Google cloud NLP API
+[Code](02 Explore Google AutoML NLP API.ipynb)
+
+Tracking and analysing call centre records and data can help to improve customer service and agent performance. It can provide insights of the areas of strength and weakness to improve the service and customer satisfaction. 
+
+With entity analysis, we can first understand the context of the call, is the customer calling about the problem on internet banking, or they want to open a new credit card, or if they see weird transaction in their bank account. Inspecting the entities in the call can easily identify what is the need of the customers, where then can easily classify the calls into different products or services (i.e. credit card, savings account, investment account, etc), further analysis on the transcription and share the analysis/ transcription of the call to the responsible team to understand the needs of the customers and things to improve. 
+
+With the combination of sentiment analysis, we can detect the emotion of the customers when talking about specific products and services. This can provide further information about the view of the customer, if it is positive or negative when talking about specific product and service. 
+However, sentiment analysis could suffer from irony and sarcasm where affect the result. 
 
 
-1. Noise Suppression Algorithm
-There are many ways to remove the noise from a given audio recording. All it requires is a small sample where there is only a background noise, and then automatically delete this noise from the rest of the sample.
+## 3. Learnings and Next Steps
+
+* The design of human's ear and a speech-to-text algorithm are very different. While humans can focus on the voice produced by a single speaker in a crowded and noisy environment, this is not the same case with machine. From our human ears, even we can clearly identified that the background noise are removed/ reduced and can clearly understand what are saying in the audio, from a machine perspective, it might become more difficult to identify words. 
+
+* It is clear that louder and slower audio can improve the transcription power. For the next step, we can try to adjust the rate of volume increase and slowdown to improve the transcription. 
+
+* The Google speech-to-text API recognizer ([Source](https://cloud.google.com/speech-to-text/docs/best-practices)) is designed to ignore background voices and noise without additional noise-canceling. However, excessive background noise and echoes may reduce accuracy, especially if a lossy codec is also used.
+
+* Use a more robust algorithm such as de-noising with a [deep learning model](https://sthalles.github.io/practical-deep-learning-audio-denoising/)
 
 
-
-
-## 3. Evaluation
-  ### 1. Google Speech-to-text
-
-
-## 4. Elaborate the use case with Google cloud NLP API
-
-## 5. Next Steps
-
-
-Slow down the speed of audio to check if it can be transcribed more accurately. 
-Denoise with Deep Learning models (Source: https://sthalles.github.io/practical-deep-learning-audio-denoising/)
-
-Sound separation --> Deep Clustering 
-
-To simplified the code. 
-
-
-
-## Learnings and next step:
-At the Data preparation period, I had faced the problem of having a the audio of female to male and the audio is being slow down. I realised that the problem is because the kHz of the noise audio and the main audio are different. I solved it by resample the noise audio to 44100 kHz.
-
-The design of human's ear and a speech-to-text algorithm are very different. While humans can focus on the voice produced by a single speaker in a crowded and noisy environment, this is not the same case with machine. From our human ears, even we can clearly identified that the background noise are removed/ reduced and can clearly understand what are saying in the audio, from a machine perspective, it might become more difficult to identify words. 
-
-It is clear that louder and slower audio can improve the transcription power. For the next step, we can try to adjust the rate of volume increase and slowdown to improve the transcription. 
-
-The Google speech-to-text API recognizer ([Source](https://cloud.google.com/speech-to-text/docs/best-practices)) is designed to ignore background voices and noise without additional noise-canceling. However, excessive background noise and echoes may reduce accuracy, especially if a lossy codec is also used.
-
-Use a more robust algorithm such as de-noising with a [deep learning model](https://sthalles.github.io/practical-deep-learning-audio-denoising/)
 
 
 
