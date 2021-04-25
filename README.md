@@ -41,7 +41,7 @@ Noise audio files are downloaded from [Microsoft Scalable Noisy Speech Dataset (
 * The noise file are used in this analysis to add noises on the cantonese audio. The loudness of the background noise are used in 5 levels, with 0 the largest and 40 the smallest. 
 
 ## 1. Noise Suppression Algorithm & Evaluation
-Code: [01 Noise Suppression MVP & Evaluation](https://github.com/michliu1212/Audio-Background-Noise-Suppression/blob/26ef75a3c225035eeb9f286c1304715213b024fa/02%20Explore%20Google%20AutoML%20NLP%20API.ipynb)
+Code: [01 Noise Suppression MVP & Evaluation](https://github.com/michliu1212/Audio-Background-Noise-Suppression/blob/7cbfa3d7a83877cdd7ebb29be2383ff5ec33c873/01%20Noise%20Suppression%20MVP%20&%20Evaluation-for%20upload.ipynb)
 
 [noisereduce library](https://timsainburg.com/noise-reduction-python.html) had been used to reduce the background noise. However, in the noisereduce library, it is required for both the noise signal and the signal audio clip. However, in the reality, we do not often have the noise signal, thus below will used a technique called sound envelope to create our own noise signal clip.
 
