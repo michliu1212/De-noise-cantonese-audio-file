@@ -41,7 +41,7 @@ Noise audio files are downloaded from [Microsoft Scalable Noisy Speech Dataset (
 * The noise file are used in this analysis to add noises on the cantonese audio. The loudness of the background noise are used in 5 levels, with 0 the largest and 40 the smallest. 
 
 ## 1. Noise Suppression Algorithm & Evaluation
-Code: [01 Noise Suppression MVP & Evaluation]()
+Code: [01 Noise Suppression MVP & Evaluation](https://github.com/michliu1212/Audio-Background-Noise-Suppression/blob/26ef75a3c225035eeb9f286c1304715213b024fa/02%20Explore%20Google%20AutoML%20NLP%20API.ipynb)
 
 [noisereduce library](https://timsainburg.com/noise-reduction-python.html) had been used to reduce the background noise. However, in the noisereduce library, it is required for both the noise signal and the signal audio clip. However, in the reality, we do not often have the noise signal, thus below will used a technique called sound envelope to create our own noise signal clip.
 
@@ -79,6 +79,8 @@ With the combination of sentiment analysis, we can detect the emotion of the cus
 
 * The API are sensitive to the volume of audio and the speed of speaking, this was found from the examples that increasing the volume and slowdown the audio can help to improve slightly the transcribing accuracy. For the next step, we can try to adjust the rate of volume increase and slowdown to improve the transcription. (Reminder: a high slowdown rate will leads to distortion of audio). 
 
+
+### Thank you! 
 
 
 
