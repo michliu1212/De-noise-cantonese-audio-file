@@ -35,7 +35,8 @@ These sounds are unwanted, but not easy to detect from the sound profile itself.
 
 
 ## 0. Preparation of Dataset
-[Code](00 Data Preparation.ipynb)
+[Code](https://github.com/michliu1212/Audio-Background-Noise-Suppression/blob/9509b04196b739ce753b9c91ae092727028034f6/00%20Data%20Preparation.ipynb)
+
 Main dataset are produced from Cantonese Youtube videos that are downloaded and converted to WAV files.
 Noise audio files are downloaded from [Microsoft Scalable Noisy Speech Dataset (MS-SNSD)](https://github.com/microsoft/MS-SNSD) where it consists of white noise, recordings of machinery and everyday household activities. 
 * The noise file are used in this analysis to add noises on the cantonese audio. The loudness of the background noise are used in 5 levels, with 0 the largest and 40 the smallest. 
