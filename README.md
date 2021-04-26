@@ -34,14 +34,14 @@ These sounds are unwanted, but not easy to detect from the sound profile itself.
 
 
 ## 0. Preparation of Dataset
-Code: [00 Data Preparation.ipynb](https://github.com/michliu1212/Audio-Background-Noise-Suppression/blob/9509b04196b739ce753b9c91ae092727028034f6/00%20Data%20Preparation.ipynb)
+Jupyter notebook: [00 Data Preparation.ipynb](https://github.com/michliu1212/Audio-Background-Noise-Suppression/blob/9509b04196b739ce753b9c91ae092727028034f6/00%20Data%20Preparation.ipynb)
 
 Main dataset are produced from Cantonese Youtube videos that are downloaded and converted to WAV files.
 Noise audio files are downloaded from [Microsoft Scalable Noisy Speech Dataset (MS-SNSD)](https://github.com/microsoft/MS-SNSD) where it consists of white noise, recordings of machinery and everyday household activities. 
 * Noise audio are added into the cantonese audio. The level of background noise are added in 5 levels, with 0 the largest and 40 the smallest. 
 
 ## 1. Noise Suppression Algorithm & Evaluation
-Code: [01 Noise Suppression MVP & Evaluation](https://github.com/michliu1212/Audio-Background-Noise-Suppression/blob/7cbfa3d7a83877cdd7ebb29be2383ff5ec33c873/01%20Noise%20Suppression%20MVP%20&%20Evaluation-for%20upload.ipynb)
+Jupyter notebook: [01 Noise Suppression MVP & Evaluation](https://github.com/michliu1212/Audio-Background-Noise-Suppression/blob/7cbfa3d7a83877cdd7ebb29be2383ff5ec33c873/01%20Noise%20Suppression%20MVP%20&%20Evaluation-for%20upload.ipynb)
 
 [noisereduce library](https://timsainburg.com/noise-reduction-python.html) had been used to reduce the background noise. In the noisereduce library, it is required for both the noise signal and the signal audio clip. However, in the reality, we do not often have the noise signal, thus below we will used a technique called sound envelope to create our own noise signal clip.
 
@@ -63,7 +63,7 @@ Code: [01 Noise Suppression MVP & Evaluation](https://github.com/michliu1212/Aud
    Google Cloud Speech-to-text API is used to evaluate the result of the algorithm. We will run the API for the clear audio files, the noise files and the de-noised files to compare the text being transcribed and the accuracy. 
 
 ## 2. Elaborate the use case with Google cloud NLP API
-Code: [02 Explore Google AutoML NLP API.ipynb](https://github.com/michliu1212/Audio-Background-Noise-Suppression/blob/ec14f55ecfb34ec49c256daa531cd429eb8cf077/02%20Explore%20Google%20AutoML%20NLP%20API.ipynb)
+Jupyter notebook: [02 Explore Google AutoML NLP API.ipynb](https://github.com/michliu1212/Audio-Background-Noise-Suppression/blob/ec14f55ecfb34ec49c256daa531cd429eb8cf077/02%20Explore%20Google%20AutoML%20NLP%20API.ipynb)
 
 Tracking and analysing call centre records and data can help to improve customer service and agent performance. It can provide insights of the areas of strength and weakness to improve the service and customer satisfaction. 
 
