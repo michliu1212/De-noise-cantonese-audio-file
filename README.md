@@ -38,12 +38,12 @@ Code: [00 Data Preparation.ipynb](https://github.com/michliu1212/Audio-Backgroun
 
 Main dataset are produced from Cantonese Youtube videos that are downloaded and converted to WAV files.
 Noise audio files are downloaded from [Microsoft Scalable Noisy Speech Dataset (MS-SNSD)](https://github.com/microsoft/MS-SNSD) where it consists of white noise, recordings of machinery and everyday household activities. 
-* The noise file are used in this analysis to add noises on the cantonese audio. The loudness of the background noise are used in 5 levels, with 0 the largest and 40 the smallest. 
+* Noise audio are added into the cantonese audio. The level of background noise are added in 5 levels, with 0 the largest and 40 the smallest. 
 
 ## 1. Noise Suppression Algorithm & Evaluation
 Code: [01 Noise Suppression MVP & Evaluation](https://github.com/michliu1212/Audio-Background-Noise-Suppression/blob/7cbfa3d7a83877cdd7ebb29be2383ff5ec33c873/01%20Noise%20Suppression%20MVP%20&%20Evaluation-for%20upload.ipynb)
 
-[noisereduce library](https://timsainburg.com/noise-reduction-python.html) had been used to reduce the background noise. However, in the noisereduce library, it is required for both the noise signal and the signal audio clip. However, in the reality, we do not often have the noise signal, thus below will used a technique called sound envelope to create our own noise signal clip.
+[noisereduce library](https://timsainburg.com/noise-reduction-python.html) had been used to reduce the background noise. In the noisereduce library, it is required for both the noise signal and the signal audio clip. However, in the reality, we do not often have the noise signal, thus below we will used a technique called sound envelope to create our own noise signal clip.
 
 ### noisereduce algorithm
       1. An Short-time Fourier Transforamtion is calculated over the noise audio clip
@@ -56,7 +56,7 @@ Code: [01 Noise Suppression MVP & Evaluation](https://github.com/michliu1212/Aud
       8. The mask is applied to the FFT of the signal, and is inverted with Inverse short time Fourier Transform (ISTFT)
 
 ### Two additional ways are being tested on top of the algorithm
-* Increase the volume of the audio
+* Increase the volume of the audio   
 * Slowdown the audio
 
 ### Evaluation - Google Cloud Speech-to-text API  
@@ -69,16 +69,15 @@ Tracking and analysing call centre records and data can help to improve customer
 
 With entity analysis, we can first understand the context of the call, is the customer calling about the problem on internet banking, or they want to open a new credit card, or if they see weird transaction in their bank account. Inspecting the entities in the call can easily identify what is the need of the customers, where then can easily classify the calls into different products or services (i.e. credit card, savings account, investment account, etc), further analysis on the transcription and share the analysis/ transcription of the call to the responsible team to understand the needs of the customers and things to improve. 
 
-With the combination of sentiment analysis, we can detect the emotion of the customers when talking about specific products and services. This can provide further information about the view of the customer, if it is positive or negative when talking about specific product and service. However, sentiment analysis could suffer from irony and sarcasm where affect the result.
+With the combination of sentiment analysis, we can detect the emotion of the customers when talking about specific products and services. This can provide further information about the view of the customer, if it is positive or negative when talking about specific product and service. However, sentiment analysis are difficult to identify irony and sarcasm which might affect the result.
 
 ## 3. Learnings and Next Steps
 
-* The Google speech-to-text API recognizer is designed to ignore background voices and noise without additional noise-canceling. However, excessive background noise and echoes may reduce accuracy, especially if a lossy codec is also used ([Source](https://cloud.google.com/speech-to-text/docs/best-practices)). So from the analysis, we can see that the API are able to transcribe a lot of speech even in the highest level of background noise and are perform particularly well with the stationary noise. The API performs the worst when the background noise are human speaking, such as when neighbour is talking and in a noisy restaurant. In next steps, we should focus on background noise with huaman speaking, to isolate the speech of the main speaker with the others. 
+* The Google speech-to-text API recognizer is designed to ignore background voices and noise without additional noise-canceling. However, excessive background noise and echoes may reduce accuracy, especially if a lossy codec is also used ([Source](https://cloud.google.com/speech-to-text/docs/best-practices)). So from the analysis, we can see that the API are able to transcribe a lot of speech even in the highest level of background noise and are performed particularly well with the stationary noise. The API performs the worst when the background noise are human speaking, such as when neighbour is talking and in a noisy restaurant. In next steps, we should focus on background noise with huaman speaking, to isolate the speech of the main speaker with the others. 
 
-* The way human perceive speech and the way machine the works are very different. While humans can focus on the voice produced by a single speaker in a crowded and noisy environment, this is not the same case with machine. From the examples we see, with our ears, we can clearly identify that the background noise are being removed/ reduced and can easily understand the speech in the audio. However, for machine, the performance are very different from what we perceived. To be able to improve the accuracy, for next steps, more effort will be put to understand the Speech-to-text algorithm and can try to use a  more robust algorithm such as de-noising with a [deep learning model](https://sthalles.github.io/practical-deep-learning-audio-denoising/).
+* The way human perceive speech and the way machine the works are very different. While humans can focus on the voice produced by a single speaker in a crowded and noisy environment, this is not the same case with machine. From the examples we see, with our ears, we can clearly identify that the background noise are being removed/ reduced and can easily understand the speech in the audio. However, for machine, the performance are very different from what we perceived. To be able to improve the accuracy, for next steps, more effort will be put to understand the Speech-to-text algorithm and can test with a more robust algorithm such as de-noising with a [deep learning model](https://sthalles.github.io/practical-deep-learning-audio-denoising/).
 
-* The API are sensitive to the volume of audio and the speed of speaking, this was found from the examples that increasing the volume and slowdown the audio can help to improve slightly the transcribing accuracy. For the next step, we can try to adjust the rate of volume increase and slowdown to improve the transcription. (Reminder: a high slowdown rate will leads to distortion of audio). 
-
+* The API are sensitive to the volume of audio and the speed of speaking. From the examples where we increased the volume and slowdown the audio, the performance of the transcription is slightly improved. So the volume and talking speed is something we should also consider when using the Google Cloud Speech-to-text API. 
 
 ### Thank you! 
 
