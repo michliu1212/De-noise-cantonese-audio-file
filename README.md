@@ -37,6 +37,7 @@ These sounds are unwanted, but not easy to detect from the sound profile itself.
 Jupyter notebook: [00 Data Preparation.ipynb](https://github.com/michliu1212/Audio-Background-Noise-Suppression/blob/9509b04196b739ce753b9c91ae092727028034f6/00%20Data%20Preparation.ipynb)
 
 Main dataset are produced from Cantonese Youtube videos that are downloaded and converted to WAV files.
+
 Noise audio files are downloaded from [Microsoft Scalable Noisy Speech Dataset (MS-SNSD)](https://github.com/microsoft/MS-SNSD) where it consists of white noise, recordings of machinery and everyday household activities. 
 * Noise audio are added into the cantonese audio. The level of background noise are added in 5 levels, with 0 the largest and 40 the smallest. 
 
