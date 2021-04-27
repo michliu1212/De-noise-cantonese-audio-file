@@ -41,7 +41,7 @@ Main dataset are produced from Cantonese Youtube videos that are downloaded and 
 Noise audio files are downloaded from [Microsoft Scalable Noisy Speech Dataset (MS-SNSD)](https://github.com/microsoft/MS-SNSD) where it consists of white noise, recordings of machinery and everyday household activities. 
 * Noise audio are added into the cantonese audio. The level of background noise are added in 5 levels, with 0 the largest and 40 the smallest. 
 
-## 1. Noise Suppression Algorithm & Evaluation
+## 1. Noise Reduction Algorithm & Evaluation
 Jupyter notebook: [01 Noise Suppression MVP & Evaluation](https://github.com/michliu1212/Audio-Background-Noise-Suppression/blob/7cbfa3d7a83877cdd7ebb29be2383ff5ec33c873/01%20Noise%20Suppression%20MVP%20&%20Evaluation-for%20upload.ipynb)
 
 [noisereduce library](https://timsainburg.com/noise-reduction-python.html) had been used to reduce the background noise. In the noisereduce library, it is required for both the noise signal and the signal audio clip. However, in the reality, we do not often have the noise signal, thus below we will used a technique called sound envelope to create our own noise signal clip.
