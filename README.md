@@ -1,6 +1,6 @@
 # Audio-Background-Noise-Suppression
 
-Real applications have to recognize audio even when there are other irrelevant sounds happening in the environment.  The audio files from the call center are full of background noise, to be able to convert call audio from call center to transcription accurately, it is important to remove or reduce the background noise from the audio.  
+Noise is everywhere, no matter you are at your home or on the street. Espectially in the digital age, these noises get picked up by microphones and interfere our communication. The audio records from the call center are as well full of background noise. As to be able use the data effectively, it is important to be able to convert these audio records to text, where reducing background noise is the key. 
 
 As in the initial stage of the experiment, we will focus on a simple algorithm to understand and explore the next steps.  
 
