@@ -1,6 +1,6 @@
 # Audio-Background-Noise-Suppression
 
-Noise is everywhere, no matter if you are at your home or on the street. Espectially in the digital age, these noises get picked up by microphones and interfere our communication. The audio records from the call center are as well full of background noise. As to be able use the data effectively, it is important to be able to convert these audio records to text, where reducing background noise is the key. 
+Noise is everywhere, no matter if you are at your home or on the street. Especially in the digital age, these noises get picked up by microphones and interfere our communication. The audio records from the call center are as well full of background noise. As to be able use the data effectively, it is important to be able to convert these audio records to text, where reducing background noise is the key. 
 
 As in the initial stage of the experiment, we will focus on a simple algorithm to understand and explore the next steps.  
 
