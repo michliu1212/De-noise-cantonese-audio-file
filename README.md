@@ -47,7 +47,7 @@ Jupyter notebook: [01 Noise Suppression MVP & Evaluation](https://github.com/mic
 [noisereduce library](https://timsainburg.com/noise-reduction-python.html) had been used to reduce the background noise. In the noisereduce library, it is required for both the noise signal and the signal audio clip. However, in the reality, we do not often have the noise signal, thus below we will used a technique called sound envelope to create our own noise signal clip.
 
 ### noisereduce algorithm
-      1. An Short-time Fourier Transforamtion is calculated over the noise audio clip
+      1. A Short-time Fourier Transforamtion is calculated over the noise audio clip
       2. Statistics are calculated over FFT of the the noise (in frequency: mean, standard deviation, noise threshold)
       3. A threshold is calculated based upon the statistics of the noise (and the desired sensitivity of the algorithm). How many standard deviations louder than the mean dB of the noise (at each frequency level) to be considered signal.
       4. An STFT is calculated over the signal
